@@ -4,9 +4,9 @@ pipeline {
         choice(name: 'ENVIRONMENT',
             choices: [ 'DEVELOPMENT', 'PRODUCTION' ],
             description: 'Choose the environment for this deployment')
-        choice(name: 'BRANCH',
-            choices: [ 'dev', 'prod' ],
-            description: 'Choose the Branch for the deployment')    
+        // choice(name: 'BRANCH',
+        //     choices: [ 'dev', 'prod' ],
+        //     description: 'Choose the Branch for the deployment')    
     }
     tools {
        maven "MAVEN_HOME"
@@ -23,7 +23,7 @@ pipeline {
         
         stage('CODE CHECKOUT') {
             steps {
-               git url:'https://github.com/pratham1951/mini-assignment.git', branch :'$BRANCH'
+               git url:'https://github.com/pratham1951/mini-assignment.git'
                 // checkout scm
             }
         }
@@ -38,6 +38,9 @@ pipeline {
         stage('TEST') {
             steps {
                 sh 'mvn test'
+                echo 'echo $BRANCH'
+                echo 'echo $env.BRANCH'
+
             }
         }
         stage('When Stage') {

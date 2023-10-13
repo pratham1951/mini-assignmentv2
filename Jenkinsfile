@@ -56,36 +56,6 @@ pipeline {
         //         echo "Run this stage - ony if the branch is Prod"
         //     }
 
-
-        // stage('SONAR SCANNER') {
-        //     environment {
-        //     sonar_token = credentials('SONAR_TOKEN')
-        //     }
-        //     steps {
-        //         sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
-        //             -Dsonar.projectKey=$JOB_NAME \
-        //             -Dsonar.host.url=https://crispy-robot-v7pwvgqvvrcpjx5-9000.app.github.dev \
-        //             -Dsonar.token=$sonar_token'
-        //     }
-        // } 
-
-        //  stage('Artifactory'){
-        //     steps{
-            
-        //     rtUpload (
-        //         serverId: 'artifactory-docker',
-        //         spec: '''{
-        //               "files": [
-        //                 {
-        //                   "pattern": "*.war",
-        //                   "target": "libs-release-local"
-        //                 }
-        //              ]
-        //         }''',
-        //     )
-        //     }
-        // }
-
         
         stage ('Deploy to Development environments') {
             when {

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo chmod 777 /var/lib/jenkins/workspace/test1/target/*.war
+# sudo chmod 777 /var/lib/jenkins/workspace/test1/target/*.war
 cp /var/lib/jenkins/workspace/test1/target/*.war /home/ubuntu/apache-tomcat-9.0.81/webapps
 
 

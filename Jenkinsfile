@@ -38,9 +38,14 @@ pipeline {
         stage('TEST') {
             steps {
                 sh 'mvn test'
+            }
+        }
+
+        stage('ENVIRONMENTS')
+        {
+            steps{
                 echo 'echo $BRANCH'
                 echo 'echo $env.BRANCH'
-
             }
         }
         stage('When Stage') {

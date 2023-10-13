@@ -25,10 +25,15 @@ pipeline {
             steps {
                git url:'https://github.com/pratham1951/mini-assignmentv2.git'
                 // checkout scm
-                echo 'Pulling... ' + env.GIT_BRANCH
+              
             }
         }
         
+          stage('CODE CHECKOUT') {
+            steps {
+                 echo 'Pulling... ' + env.GIT_BRANCH
+            }
+        }
         
         stage('BUILD') {
             steps {

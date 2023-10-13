@@ -13,7 +13,7 @@ pipeline {
        jdk "JAVA_HOME"
     }
     
-    stages {
+    stages{
 
         stage('CLEAN WORKSPACE') {
             steps {
@@ -29,7 +29,7 @@ pipeline {
             }
         }
         
-          stage('CODE CHECKOUT') {
+          stage('TESTING') {
             steps {
                  echo 'Pulling... ' + env.GIT_BRANCH   
             }

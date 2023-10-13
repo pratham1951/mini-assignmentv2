@@ -4,9 +4,9 @@ pipeline {
         choice(name: 'ENVIRONMENT',
             choices: [ 'DEVELOPMENT', 'PRODUCTION' ],
             description: 'Choose the environment for this deployment')
-        // choice(name: 'BRANCH',
-        //     choices: [ 'dev', 'prod' ],
-        //     description: 'Choose the Branch for the deployment')    
+        choice(name: 'BRANCH',
+            choices: [ 'dev', 'prod' ],
+            description: 'Choose the Branch for the deployment')    
     }
     tools {
        maven "MAVEN_HOME"
@@ -23,7 +23,7 @@ pipeline {
         
         stage('CODE CHECKOUT') {
             steps {
-               git url:'https://github.com/pratham1951/mini-assignmentv2.git', branch:'$env.BRANCH'
+               git url:'https://github.com/pratham1951/mini-assignmentv2.git', branch :'$BRANCH'
                 // checkout scm
             }
         }
@@ -35,26 +35,40 @@ pipeline {
             }
         }
         
-        // stage('TEST') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        // }
-
-        stage('ENVIRONMENTS')
-        {
-            steps{
-                echo 'echo $BRANCH'
-                echo 'echo $env.BRANCH'
+        stage('TEST') {
+            steps {
+                sh 'mvn test'
             }
         }
-        // stage('When Stage') {
-        //     when {
-        //         expression { env.BRANCH_NAME == 'prod'}
-        //         }
-        //     steps {
-        //         echo "Run this stage - ony if the branch is Prod"
+
+        // stage('SONAR SCANNER') {
+        //     environment {
+        //     sonar_token = credentials('SONAR_TOKEN')
         //     }
+        //     steps {
+        //         sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
+        //             -Dsonar.projectKey=$JOB_NAME \
+        //             -Dsonar.host.url=https://crispy-robot-v7pwvgqvvrcpjx5-9000.app.github.dev \
+        //             -Dsonar.token=$sonar_token'
+        //     }
+        // } 
+
+        //  stage('Artifactory'){
+        //     steps{
+            
+        //     rtUpload (
+        //         serverId: 'artifactory-docker',
+        //         spec: '''{
+        //               "files": [
+        //                 {
+        //                   "pattern": "*.war",
+        //                   "target": "libs-release-local"
+        //                 }
+        //              ]
+        //         }''',
+        //     )
+        //     }
+        // }
 
         
         stage ('Deploy to Development environments') {

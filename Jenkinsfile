@@ -48,14 +48,14 @@ pipeline {
                 echo 'echo $env.BRANCH'
             }
         }
-        stage('When Stage') {
-            when {
-                expression { env.BRANCH_NAME == 'prod'}
-                }
-            steps {
-                echo "Run this stage - ony if the branch is Prod"
-            }
-}
+        // stage('When Stage') {
+        //     when {
+        //         expression { env.BRANCH_NAME == 'prod'}
+        //         }
+        //     steps {
+        //         echo "Run this stage - ony if the branch is Prod"
+        //     }
+
 
         // stage('SONAR SCANNER') {
         //     environment {

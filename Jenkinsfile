@@ -78,9 +78,8 @@ pipeline {
             }
             steps {
                 echo "Deploying to ${params.ENVIRONMENT}"
-               
-                
-            }
+                sh 'scripts/dev/dev.sh'
+             }
         }
         stage ('Deploy to production environment') {
             when {
@@ -89,6 +88,7 @@ pipeline {
             steps {
                 input message: 'Confirm deployment to production...', ok: 'Deploy'
                 echo "Deploying to ${params.ENVIRONMENT}"
+                 sh 'scripts/prod/prod.sh'
             }
         }
        

@@ -31,7 +31,7 @@ pipeline {
         
           stage('CODE CHECKOUT') {
             steps {
-                 echo 'Pulling... ' + env.GIT_BRANCH 
+                 echo 'Pulling... ' + env.GIT_BRANCH   
             }
         }
         

@@ -4,16 +4,16 @@ pipeline {
         choice(name: 'ENVIRONMENT',
             choices: [ 'DEVELOPMENT', 'PRODUCTION' ],
             description: 'Choose the environment for this deployment')
-        // choice(name: 'BRANCH',
-        //     choices: [ 'dev', 'prod' ],
-        //     description: 'Choose the Branch for the deployment')    
+        choice(name: 'BRANCH',
+            choices: [ 'dev', 'prod' ],
+            description: 'Choose the Branch for the deployment')    
     }
     tools {
        maven "MAVEN_HOME"
        jdk "JAVA_HOME"
     }
     
-    stages{
+    stages {
 
         stage('CLEAN WORKSPACE') {
             steps {
@@ -23,17 +23,11 @@ pipeline {
         
         stage('CODE CHECKOUT') {
             steps {
-               git url:'https://github.com/pratham1951/mini-assignmentv2.git'
+               git url:'https://github.com/pratham1951/mini-assignment.git', branch :'$BRANCH'
                 // checkout scm
-              
             }
         }
         
-          stage('TESTING') {
-            steps {
-                 echo 'Pulling... ' + env.GIT_BRANCH   
-            }
-        }
         
         stage('BUILD') {
             steps {
@@ -46,6 +40,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
+}
 
         // stage('SONAR SCANNER') {
         //     environment {

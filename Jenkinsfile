@@ -23,7 +23,7 @@ pipeline {
         
         stage('CODE CHECKOUT') {
             steps {
-               git url:'https://github.com/pratham1951/mini-assignment.git'
+               git url:'https://github.com/pratham1951/mini-assignment.git', branch:'$BRANCH'
                 // checkout scm
             }
         }

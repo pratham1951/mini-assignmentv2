@@ -45,7 +45,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'prod'}
                 }
             steps {
-                echo "Run this stage - ony if the branch is  dev"
+                echo "Run this stage - ony if the branch is Prod"
             }
 }
 

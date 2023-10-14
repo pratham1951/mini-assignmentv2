@@ -40,7 +40,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-}
 
         // stage('SONAR SCANNER') {
         //     environment {

@@ -1,0 +1,10 @@
+<Service name="app2">
+   <Connector port="9080" protocol="HTTP/1.1" 
+           connectionTimeout="20000" 
+           redirectPort="9443" />
+   <Engine name="Catalina" defaultHost="localhost">
+      <Host name="localhost"  appBase="app2"
+        unpackWARs="true" autoDeploy="true">
+      </Host>
+   </Engine>
+</Service>
